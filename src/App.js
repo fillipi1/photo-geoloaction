@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
-import axios from 'axios';
+import EXIF from 'exif-js'
+
 
 class App extends Component {
   state ={
@@ -8,9 +9,12 @@ class App extends Component {
   }
 
   fileUploadHandler = () => {
-    console.log(this.state.selectedFile)
-
-  }
+    console.log(this.state.selectedFile);
+    EXIF.getData(this.state.selectedFile, function(){
+      var allMetaData = EXIF.getAllTags(this);
+      console.log(allMetaData)
+    });
+  };
 
   fileHandler = event => {
     this.setState({
