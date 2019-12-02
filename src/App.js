@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import './App.css';
+import axios from 'axios';
 
 class App extends Component {
   state ={
     selectedFile: null
   }
 
-  fileUploadHandler = event => {
-    
+  fileUploadHandler = () => {
+    console.log(this.state.selectedFile)
+
   }
 
   fileHandler = event => {
@@ -20,7 +22,7 @@ class App extends Component {
     return (
       <div className="App">
         <input type="file" onChange={this.fileHandler}/>
-        <button onClick={this.fileSelectedHandler}>Upload</button>
+        <button onClick={this.fileUploadHandler}>Upload</button>
       </div>
     );
   }
